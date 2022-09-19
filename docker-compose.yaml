@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  wbservice_app:
       build: ./docker/app/
       container_name: wbservice_app
       volumes:
@@ -13,13 +13,13 @@ services:
           aliases:
           - wbservice_app
 
-  nginx:
+  wbservice:
       build: ./docker/nginx
       container_name: wbservice
       links:
-          - app
+          - wbservice_app
       volumes_from:
-          - app
+          - wbservice_app
       ports:
           - 80:80
       networks:
